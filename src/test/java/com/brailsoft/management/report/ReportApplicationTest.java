@@ -1,7 +1,5 @@
 package com.brailsoft.management.report;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -28,7 +26,7 @@ class ReportApplicationTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+
 	}
 
 }
