@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>property-management-report</groupId>
   <artifactId>property-management-report</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>Property management report</name>
   <description>An application that produces reports based on the data stored in the property management application</description>
 

@@ -45,11 +45,29 @@ public class ReportApplication {
 	private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(DateFormats.dateFormatForUI);
 
 	public static void main(String[] args) {
-		LOGGER.entering(CLASS_NAME, "start", args);
-		configurePreferences(args);
-		runApplication();
-		shutDown();
-		LOGGER.exiting(CLASS_NAME, "start");
+		if (args.length == 1 && args[0].equalsIgnoreCase("--help")) {
+			displayHelp();
+			System.exit(0);
+		} else if (args.length > 1) {
+			displayHelp();
+			System.exit(0);
+		} else {
+			configurePreferences(args);
+			runApplication();
+			shutDown();
+		}
+	}
+
+	private static void displayHelp() {
+		System.out.println("Usage: ReportApplication [option | arg]");
+		System.out.println();
+		System.out.println("where option includes:");
+		System.out.println("  <--help> that displays this usage information.");
+		System.out.println();
+		System.out.println("and arg which is passed to the main class");
+		System.out.println("  <arg>    preferencces name");
+		System.out.println("  preferences name must refer to an exisitng set of preferences,");
+		System.out.println("  as created in PropertyManagementApplication.");
 	}
 
 	private static void runApplication() {
@@ -72,6 +90,11 @@ public class ReportApplication {
 			preferencesName = args[0];
 		}
 		ApplicationPreferences.getInstance(preferencesName);
+		String dir = ApplicationPreferences.getInstance().getDirectory();
+		if (dir == null || dir.isEmpty() || dir.isBlank()) {
+			displayHelp();
+			System.exit(0);
+		}
 		PropertyManagerLogConfigurer.setUp();
 	}
 
